@@ -1,0 +1,282 @@
+Sub NoFormatPaste()
+' Macro recorded 17/05/2011 by Warren Lewington
+' Finally found code that worked. From Cybertext - Rhonda Bracey.
+
+    Selection.PasteSpecial DataType:=wdPasteText
+End Sub
+Sub EquipFormat()
+'
+' EquipFormat Macro
+' Macro recorded 27/01/2009 by Warren Lewington
+' Designed to format information pasted into documents from excels spreadsheet tables
+
+' Find and replace tab table separators into paragraph marks
+    Selection.Find.ClearFormatting
+    Selection.Find.Replacement.ClearFormatting
+    With Selection.Find
+        .Text = "^t"
+        .Replacement.Text = "^p"
+        .Forward = True
+        .Wrap = wdFindAsk
+        .Format = False
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute
+    Selection.Find.Execute Replace:=wdReplaceAll
+' Now format the information to suit the layout.
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Valve Number:" & vbTab
+    Selection.Style = ActiveDocument.Styles("Heading 5")
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Description:" & vbTab
+'    Selection.Style = ActiveDocument.Styles("List")
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Process Fluid:" & vbTab
+    Selection.MoveUp Unit:=wdLine, Count:=1, Extend:=wdExtend
+    Selection.Style = ActiveDocument.Styles("List")
+    
+End Sub
+Sub InstrFormat()
+'
+' InstrFormat Macro
+' Macro recorded 27/01/2009 by Warren Lewington
+' Designed to format information pasted into documents from excels spreadsheet tables
+'
+'    Selection.Find.ClearFormatting
+'    Selection.Find.Replacement.ClearFormatting
+'    With Selection.Find
+'        .Text = "^t"
+'        .Replacement.Text = "^p"
+'        .Forward = True
+'        .Wrap = wdFindAsk
+'        .Format = False
+'        .MatchCase = False
+'        .MatchWholeWord = False
+'        .MatchWildcards = False
+'        .MatchSoundsLike = False
+'        .MatchAllWordForms = False
+'    End With
+'    Selection.Find.Execute
+'    Selection.Find.Execute Replace:=wdReplaceAll
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Instrument Number:" & vbTab
+    Selection.Style = ActiveDocument.Styles("Heading 5")
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Description:" & vbTab
+'    Selection.Style = ActiveDocument.Styles("List")
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Manufacturer:" & vbTab
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Model:" & vbTab
+    Selection.MoveUp Unit:=wdLine, Count:=2, Extend:=wdExtend
+    Selection.Style = ActiveDocument.Styles("List")
+    
+End Sub
+
+Sub CutAndPasteUnformatted()
+'
+' CutAndPasteUnformatted Macro
+' Recorded 18-Jul-08 should cut and paste unformatted text in place of field codes
+'
+
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1, Extend:=wdExtend
+    Selection.Copy
+    Selection.Delete
+    Selection.PasteAndFormat wdFormatPlainText
+    
+End Sub
+
+Sub FormatHeading5BodyText()
+'
+' FormatHeading5BodyText Macro
+'
+'
+'   Selection.Style = ActiveDocument.Styles("Heading 7")
+    Selection.Style = ActiveDocument.Styles("Heading 5")
+    Selection.MoveDown Unit:=wdLine, Count:=1
+'   Selection.MoveUp Unit:=wdLine, Count:=3
+'   Selection.Style = ActiveDocument.Styles("Body Text 3")
+    Selection.Style = ActiveDocument.Styles("Body Text")
+    Selection.MoveDown Unit:=wdLine, Count:=2
+End Sub
+Sub FormatSpecs()
+'
+' FormatSpecs Macro
+'
+'
+    Selection.Style = ActiveDocument.Styles("Heading 5")
+    Selection.TypeText Text:="Valve Number:" & vbTab
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Description:" & vbTab
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="NS:" & vbTab
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Process Fluid:" & vbTab
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Max Working Press:" & vbTab
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Working Temp:" & vbTab
+    Selection.EndKey Unit:=wdLine
+    Selection.TypeText Text:="°C"
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Valve Type:" & vbTab
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="Connection Type:" & vbTab
+    Selection.EndKey Unit:=wdLine
+    Selection.TypeText Text:=Chr(11)
+    Selection.Delete Unit:=wdCharacter, Count:=1
+    Selection.EndKey Unit:=wdLine
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:="Actuator Type:" & vbTab
+    Selection.EndKey Unit:=wdLine
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:="Body:" & vbTab
+    Selection.EndKey Unit:=wdLine
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:="Seat:" & vbTab
+    Selection.EndKey Unit:=wdLine
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:="Stem:" & vbTab
+    Selection.EndKey Unit:=wdLine
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:="Trim:" & vbTab
+    Selection.EndKey Unit:=wdLine
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:="Manufacturer:" & vbTab
+    Selection.EndKey Unit:=wdLine
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.Delete Unit:=wdCharacter, Count:=1
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.Delete Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:="Stroke Limiter:" & vbTab
+    Selection.EndKey Unit:=wdLine
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:="Position Limiter:" & vbTab
+    Selection.EndKey Unit:=wdLine
+    Selection.MoveUp Unit:=wdLine, Count:=15, Extend:=wdExtend
+    Selection.Style = ActiveDocument.Styles("List")
+    
+End Sub
+Sub MoveUp15()
+'
+' MoveUp15 Macro
+'
+'
+    Selection.MoveUp Unit:=wdLine, Count:=15, Extend:=wdExtend
+    Selection.Style = ActiveDocument.Styles("List")
+End Sub
+Sub TitleCase()
+'
+' TitleCase Macro
+' Macro recorded 13/03/2008 by Warren Lewington
+'
+    Selection.Range.Case = wdTitleWord
+   
+End Sub
+Sub LowerCase()
+'
+' LowerCase Macro
+' Macro recorded 01/05/2008 by Warren Lewington
+'
+    Selection.Range.Case = wdLowerCase
+End Sub
+Sub UpperCase()
+'
+' UpperCase Macro
+' Macro recorded 13/03/2008 by Warren Lewington
+'
+    Selection.Range.Case = wdUpperCase
+   
+End Sub
+
+Sub SentenceCase()
+'
+' SentenceCase Macro
+' Macro recorded 02/05/2008 by Warren Lewington
+'
+    Selection.Range.Case = wdSentenceCase
+   
+End Sub
+Sub DeleteTable()
+'
+' DeleteTable Macro
+' Macro created 03/11/2009 by Warren Lewington
+'
+'    Selection.Range = wdTableDelete
+    Selection.Tables(1).Select
+    Selection.Tables(1).Delete
+    
+    
+End Sub
+Sub TableDelete()
+'
+' TableDelete Macro
+' Macro recorded 03/11/2009 by Warren Lewington
+'
+    Selection.Tables(1).Select
+    Selection.Tables(1).Delete
+    CommandBars("Warren").Visible = True
+    With ActiveDocument
+        .UpdateStylesOnOpen = False
+        .AttachedTemplate = _
+            "C:\Documents and Settings\warren.lewington\Application Data\Microsoft\Templates\Memcor Operation and Maintenance Manual.dot"
+        .XMLSchemaReferences.AutomaticValidation = True
+        .XMLSchemaReferences.AllowSaveAsXMLWithoutValidation = False
+    End With
+    Application.OrganizerCopy Source:= _
+        "C:\Documents and Settings\warren.lewington\Application Data\Microsoft\Templates\normal.dot" _
+        , Destination:= _
+        "R:\5_Products\SpecialTools\ModuleRemoval\L10AndL20_RemovalTool_IW comments Draft_31-08 12-53.doc" _
+        , Name:="Warren", Object:=wdOrganizerObjectCommandBars
+    Application.OrganizerDelete Source:= _
+        "R:\5_Products\SpecialTools\ModuleRemoval\L10AndL20_RemovalTool_IW comments Draft_31-08 12-53.doc" _
+        , Name:="Warren", Object:=wdOrganizerObjectCommandBars
+End Sub
+Sub ItemNumber()
+'
+' ItemNumber Macro
+' Macro recorded 16/03/2011 by Warren Lewington
+'
+    Selection.TypeText Text:="item []"
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+End Sub
+Sub DegreesAlt()
+'
+' DegreesAlt Macro
+' Macro recorded 5/17/2011 by Warren Lewington
+'
+    Selection.TypeText Text:="°"
+End Sub
+Sub RegisteredTrademark()
+'
+' RegisteredTrademark Macro
+' Macro recorded 5/25/2011 by Warren Lewington
+'
+    Selection.TypeText Text:="®"
+End Sub
+Sub CopyrightSymbol()
+'
+' CopyrightSymbol Macro
+' Created 25/May/2011 by Warren Lewington
+'
+    Selection.TypeText Text:="©"
+End Sub
+
+End Sub
