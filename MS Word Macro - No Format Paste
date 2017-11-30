@@ -1,0 +1,6 @@
+Sub NoFormatPaste()
+' Macro recorded 17/05/2011 by Warren Lewington
+' Finally found code that worked. From Cybertext - Rhonda Bracey.
+
+    Selection.PasteSpecial DataType:=wdPasteText
+End Sub
