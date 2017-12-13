@@ -1,0 +1,14 @@
+Sub StructureCore()
+'Macro created by Warren 13 Dec 17.
+' Used for formatting structure information at the top of larger smartforms.
+
+    Selection.Style = ActiveDocument.Styles("Structure Core")
+    Selection.TypeText Text:="Core:" & vbTab
+End Sub
+Sub StructureSupport()
+'Macro created by Warren 13 Dec 17.
+' Used for formatting structure information at the top of larger smartforms.
+
+    Selection.Style = ActiveDocument.Styles("Structure Support")
+    Selection.TypeText Text:="Core:" & vbTab
+End Sub
