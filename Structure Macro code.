@@ -10,5 +10,5 @@ Sub StructureSupport()
 ' Used for formatting structure information at the top of larger smartforms.
 
     Selection.Style = ActiveDocument.Styles("Structure Support")
-    Selection.TypeText Text:="Core:" & vbTab
+    Selection.TypeText Text:="Support:" & vbTab
 End Sub
