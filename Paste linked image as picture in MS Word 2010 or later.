@@ -1,0 +1,17 @@
+Sub PasteAsPicture()
+'
+' PasteAsPicture Macro
+' Recorded 28 Dec 17. Intent is to copy a linked Word 2010 or later_
+' image and paste it as a picture without a link Note the - Link:=False.
+' Select the image and run this macro.
+'
+    Selection.Copy
+' Next is equivalent to [ Home > Paste > Paste Special > Paste as PNG ] steps with Mouse
+Selection.PasteSpecial Link:=False, DataType:=14, Placement:=wdInLine, _
+        DisplayAsIcon:=False
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+' Next we'll Delete the old linked image
+' (A hidden field just to confuse users - Thankyou to the idiot MS developer who decided this)
+    Selection.Delete Unit:=wdCharacter, Count:=1
+
+End Sub
