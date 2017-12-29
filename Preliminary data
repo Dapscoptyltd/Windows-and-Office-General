@@ -1,0 +1,40 @@
+Sub Macro2()
+'
+' Macro2 Macro Formats the preliminary data for all smartforms
+'
+'
+    Selection.Style = ActiveDocument.Styles("Normal 6.5 Tab")
+    Selection.Find.ClearFormatting
+    Selection.Find.Replacement.ClearFormatting
+    Selection.Find.Replacement.Style = ActiveDocument.Styles("Normal 6.5 Bold" _
+        )
+    With Selection.Find
+        .Text = "(*:)"
+        .Replacement.Text = ""
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchAllWordForms = False
+        .MatchSoundsLike = False
+        .MatchWildcards = True
+    End With
+    Selection.Find.Execute
+    With Selection
+        If .Find.Forward = True Then
+            .Collapse Direction:=wdCollapseStart
+        Else
+            .Collapse Direction:=wdCollapseEnd
+        End If
+        .Find.Execute Replace:=wdReplaceOne
+        If .Find.Forward = True Then
+            .Collapse Direction:=wdCollapseEnd
+        Else
+            .Collapse Direction:=wdCollapseStart
+        End If
+        .Find.Execute
+    End With
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.HomeKey Unit:=wdLine
+End Sub
