@@ -1,0 +1,131 @@
+Sub PreliminaryData()
+'
+' Macro2 Macro Formats the preliminary data for all sfs sections
+' frontmatter with the 6.5 tab
+'
+'
+    Selection.Style = ActiveDocument.Styles("Normal 6.5 Tab")
+    Selection.Find.ClearFormatting
+    Selection.Find.Replacement.ClearFormatting
+    Selection.Find.Replacement.Style = ActiveDocument.Styles("Normal 6.5 Bold" _
+        )
+    With Selection.Find
+        .Text = "(*:)"
+        .Replacement.Text = ""
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchAllWordForms = False
+        .MatchSoundsLike = False
+        .MatchWildcards = True
+    End With
+    Selection.Find.Execute
+    With Selection
+        If .Find.Forward = True Then
+            .Collapse Direction:=wdCollapseStart
+        Else
+            .Collapse Direction:=wdCollapseEnd
+        End If
+        .Find.Execute Replace:=wdReplaceOne
+        If .Find.Forward = True Then
+            .Collapse Direction:=wdCollapseEnd
+        Else
+            .Collapse Direction:=wdCollapseStart
+        End If
+        .Find.Execute
+    End With
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.HomeKey Unit:=wdLine
+End Sub
+Sub NoFormatPaste()
+' Macro recorded 17/05/2011 by Warren Lewington
+' Finally found code that worked. From Cybertext - Rhonda Bracey.
+
+    Selection.PasteSpecial DataType:=wdPasteText
+End Sub
+Sub StructureCore()
+'Macro created by Warren 13 Dec 17.
+' Used for formatting structure information at the top of larger sfs.
+
+    Selection.Style = ActiveDocument.Styles("Structure Core")
+    Selection.TypeText Text:="Core:" & vbTab
+End Sub
+Sub StructureSupport()
+'Macro created by Warren 13 Dec 17.
+' Used for formatting structure information at the top of larger sfs.
+
+    Selection.Style = ActiveDocument.Styles("Structure Support")
+    Selection.TypeText Text:="Support:" & vbTab
+End Sub
+
+Sub PasteAddStartDate()
+'Macro created by Warren 17 Feb 18.
+' Used for formatting structure information at the top of larger sections.
+
+    Selection.TypeText Text:=" "
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+    Selection.Style = ActiveDocument.Styles("Red Colour Text")
+   Selection.TypeText Text:=" **Please add a date when the activity started.**"
+End Sub
+
+Sub PasteAddEndDate()
+'Macro created by Warren 17 Feb 18.
+' Used for formatting structure information at the top of larger sections.
+
+    Selection.TypeText Text:=" "
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+    Selection.Style = ActiveDocument.Styles("Red Colour Text")
+   Selection.TypeText Text:=" **Please add a date when the activity might end.**"
+End Sub
+
+Sub PasteIsThisDateCorrect()
+'Macro created by Warren 17 Feb 18.
+' Used for formatting structure information at the top of larger sections.
+
+    Selection.TypeText Text:=" "
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+    Selection.Style = ActiveDocument.Styles("Red Colour Text")
+   Selection.TypeText Text:=" **Is this date correct?**"
+End Sub
+
+Sub PasteAddValueTBC()
+'Macro created by Warren 17 Feb 18.
+' Used for formatting structure information at the top of larger sections.
+
+    Selection.TypeText Text:=" "
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+    Selection.Style = ActiveDocument.Styles("Red Colour Text")
+   Selection.TypeText Text:=" **This value tbc.**"
+End Sub
+
+Sub PasteAsPicture()
+'
+' PasteAsPicture Macro
+' Recorded 28 Dec 17. Intent is to copy a linked Word 2010 or later_
+' image and paste it as a picture without a link - Link:=False.
+' Select the image and run this macro.
+'
+    Selection.Copy
+' Next is equivalent to [ Home > Paste > Paste Special > Paste as PNG ] steps with Mouse
+Selection.PasteSpecial Link:=False, DataType:=14, Placement:=wdInLine, _
+        DisplayAsIcon:=False
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+' Next we'll Delete the old linked image
+' (A hidden field just to confuse users - Thankyou to the idiot MS developer who decided this)
+    Selection.Delete Unit:=wdCharacter, Count:=1
+
+End Sub
+Sub DeleteSingleLine()
+'
+' DeleteShortDateCorrect Macro
+' Deletes "is this data correct" "...add a date..." and "...this value..." texts.
+'
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1, Extend:=wdExtend
+    Selection.TypeBackspace
+    Selection.Style = ActiveDocument.Styles("Default Paragraph Font")
+
+End Sub
+
