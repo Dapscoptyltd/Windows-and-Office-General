@@ -1,0 +1,153 @@
+Sub ParaDeleteSpace()
+'
+' ParaDeleteSpace Macro
+'
+'
+    Selection.Delete Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:=" "
+End Sub
+Sub DeleteLongStart()
+'
+' DeleteLongStart Macro
+'
+'
+    Selection.MoveRight Unit:=wdCharacter, Count:=49, Extend:=wdExtend
+    Selection.Delete Unit:=wdCharacter, Count:=1
+End Sub
+Sub DeleteLongEnd()
+'
+' DeleteLongEnd Macro
+'
+'
+    Selection.MoveRight Unit:=wdCharacter, Count:=51, Extend:=wdExtend
+    Selection.Delete Unit:=wdCharacter, Count:=1
+End Sub
+Sub Macro1End()
+'
+' Macro1End Macro
+'
+'
+      Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1, Extend:=wdExtend
+    Selection.Delete Unit:=wdCharacter, Count:=1
+End Sub
+Sub Macro1SelectCopy()
+'
+' Macro1SelectCopy Macro
+'
+'
+  '  Selection.EndKey Unit:=wdStory, Extend:=wdExtend
+  '  Selection.MoveLeft Unit:=wdCharacter, Count:=1
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1, Extend:=wdExtend
+    Selection.Copy
+End Sub
+Sub Macro2()
+'
+' Macro2 Macro Formats the preliminary data for all smartforms
+'
+'
+    Selection.Style = ActiveDocument.Styles("Normal 6.5 Tab")
+    Selection.Find.ClearFormatting
+    Selection.Find.Replacement.ClearFormatting
+    Selection.Find.Replacement.Style = ActiveDocument.Styles("Normal 6.5 Bold" _
+        )
+    With Selection.Find
+        .Text = "(*:)"
+        .Replacement.Text = ""
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchAllWordForms = False
+        .MatchSoundsLike = False
+        .MatchWildcards = True
+    End With
+    Selection.Find.Execute
+    With Selection
+        If .Find.Forward = True Then
+            .Collapse Direction:=wdCollapseStart
+        Else
+            .Collapse Direction:=wdCollapseEnd
+        End If
+        .Find.Execute Replace:=wdReplaceOne
+        If .Find.Forward = True Then
+            .Collapse Direction:=wdCollapseEnd
+        Else
+            .Collapse Direction:=wdCollapseStart
+        End If
+        .Find.Execute
+    End With
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.HomeKey Unit:=wdLine
+End Sub
+Sub NoFormatPaste()
+' Macro recorded 17/05/2011 by Warren Lewington
+' Finally found code that worked. From Cybertext - Rhonda Bracey.
+
+    Selection.PasteSpecial DataType:=wdPasteText
+End Sub
+Sub StructureCore()
+'Macro created by Warren 13 Dec 17.
+' Used for formatting structure information at the top of larger smartforms.
+
+    Selection.Style = ActiveDocument.Styles("Structure Core")
+    Selection.TypeText Text:="Core:" & vbTab
+End Sub
+Sub StructureSupport()
+'Macro created by Warren 13 Dec 17.
+' Used for formatting structure information at the top of larger smartforms.
+
+    Selection.Style = ActiveDocument.Styles("Structure Support")
+    Selection.TypeText Text:="Support:" & vbTab
+End Sub
+
+Sub Break()
+'
+' Break Macro
+'
+'
+    Selection.TypeText Text:="Links"
+End Sub
+Sub PasteAsPicture()
+'
+' PasteAsPicture Macro
+' Recorded 28 Dec 17. Intent is to copy a linked Word 2010 or later_
+' image and paste it as a picture without a link - Link:=False.
+' Select the image and run this macro.
+'
+    Selection.Copy
+' Next is equivalent to [ Home > Paste > Paste Special > Paste as PNG ] steps with Mouse
+Selection.PasteSpecial Link:=False, DataType:=14, Placement:=wdInLine, _
+        DisplayAsIcon:=False
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+' Next we'll Delete the old linked image
+' (A hidden field just to confuse users - Thankyou to the idiot MS developer who decided this)
+    Selection.Delete Unit:=wdCharacter, Count:=1
+
+End Sub
+Sub DeleteDoubleLine()
+'
+' DeleteShortDateCorrect Macro
+' Deletes is this data correct.
+'
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1, Extend:=wdExtend
+    Selection.TypeBackspace
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1, Extend:=wdExtend
+    Selection.TypeBackspace
+End Sub
+Sub DeleteSingleLine()
+'
+' DeleteShortDateCorrect Macro
+' Deletes is this data correct.
+'
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1, Extend:=wdExtend
+    Selection.TypeBackspace
+
+End Sub
+
