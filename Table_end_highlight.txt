@@ -1,0 +1,15 @@
+Option Explicit
+Sub ScratchMacro()
+'A quick macro scratch pad created by Greg Maxey
+'Helps highlight tables ending with punctuation problems.
+Dim oPar As Paragraph
+Dim oRng As Word.Range
+For Each oPar In ActiveDocument.Paragraphs
+  Set oRng = oPar.Range
+  If Len(oRng) > 2 Then
+    If Not oRng.Characters.Last.Previous Like "[.!?;:]" Then
+      oRng.Characters.Last.Previous.HighlightColorIndex = wdYellow
+    End If
+  End If
+Next
+End Sub
