@@ -1,0 +1,7 @@
+Sub LowerCase()
+'
+' LowerCase Macro
+' Macro recorded 01/05/2008 by Warren Lewington
+'
+    Selection.Range.Case = wdLowerCase
+End Sub
