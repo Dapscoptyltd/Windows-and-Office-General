@@ -1,0 +1,21 @@
+Sub DeleteSectionBreak()
+'
+' DeleteSectionBreak Macro
+' Macro recorded 4/05/2012 by W. Lewington
+'
+    Selection.Find.ClearFormatting
+    With Selection.Find
+        .Text = "^b"
+        .Replacement.Text = " "
+        .Forward = True
+        .Wrap = wdFindAsk
+        .Format = False
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute
+    Selection.Delete Unit:=wdCharacter, Count:=1
+End Sub
