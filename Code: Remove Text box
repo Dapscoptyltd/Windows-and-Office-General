@@ -1,0 +1,19 @@
+Sub RemoveTextbox() 
+
+
+Dim MyBox As Shape 
+For Each MyBox In ActiveDocument.Shapes 
+With MyBox 
+        .Select 
+        .Line.Visible = msoFalse 
+        .ConvertToFrame 
+    End With 
+Next MyBox 
+
+
+Dim MyFrame As Frame 
+For Each MyFrame In ActiveDocument.Frames 
+    MyFrame.Select 
+    MyFrame.Delete 
+Next MyFrame 
+End Sub 
