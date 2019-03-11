@@ -1,0 +1,31 @@
+Sub TableParaMarkReplace()
+' Attribute TableParaMarkReplace.VB_Description = "Macro recorded 04/10/2011 by wlcont1c"
+' Attribute TableParaMarkReplace.VB_ProcData.VB_Invoke_Func = "Normal.NewMacros.Macro1"
+'
+' TableParaMarkReplace Macro
+' Macro recorded 04/10/2011 by wlcont1c
+'
+    Selection.Find.ClearFormatting
+    Selection.Find.Replacement.ClearFormatting
+    With Selection.Find
+        .Text = "-P-"
+        .Replacement.Text = "^p"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = False
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute
+    With Selection
+        If .Find.Forward = True Then
+            .Collapse Direction:=wdCollapseStart
+        Else
+            .Collapse Direction:=wdCollapseEnd
+        End If
+        .Find.Execute Replace:=wdReplaceOne
+    End With
+End Sub
