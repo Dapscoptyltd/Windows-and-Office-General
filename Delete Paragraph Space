@@ -1,0 +1,8 @@
+Sub ParaDeleteSpace()
+'
+' ParaDeleteSpace Macro
+'
+'
+    Selection.Delete Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:=" "
+End Sub
