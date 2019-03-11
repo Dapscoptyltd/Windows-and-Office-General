@@ -1,0 +1,11 @@
+Sub TableParaMark()
+Attribute TableParaMark.VB_Description = "Macro recorded 04/10/2011 by wlcont1c"
+Attribute TableParaMark.VB_ProcData.VB_Invoke_Func = "Normal.NewMacros.TableParaMark"
+'
+' TableParaMark Macro
+' Macro recorded 04/10/2011 by wlcont1c
+'
+    Selection.TypeText Text:="-^P-"
+    Selection.Delete Unit:=wdCharacter, Count:=1
+
+End Sub
