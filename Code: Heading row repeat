@@ -1,0 +1,7 @@
+Sub HEadingRowRepeat()
+'
+' HEadingRowRepeat Macro
+'
+'
+    Selection.Rows.HeadingFormat = True
+End Sub
