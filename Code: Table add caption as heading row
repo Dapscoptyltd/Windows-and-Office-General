@@ -1,0 +1,20 @@
+Sub TableTitleRow()
+'
+' TableTitleRow Macro
+' Macro recorded 29/05/2009 by Warren Lewington
+'
+    Selection.InsertRowsAbove 1
+    Selection.Cells.Merge
+    Selection.Cells.VerticalAlignment = wdCellAlignVerticalCenter
+    Selection.Style = ActiveDocument.Styles("Caption Table")
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+    Selection.MoveUp Unit:=wdLine, Count:=1
+    Selection.HomeKey Unit:=wdLine
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1, Extend:=wdExtend
+    Selection.Cut
+    Selection.MoveDown Unit:=wdLine, Count:=1
+    Selection.Paste
+    Selection.MoveUp Unit:=wdLine, Count:=1
+    Selection.Delete Unit:=wdCharacter, Count:=1
+End Sub
