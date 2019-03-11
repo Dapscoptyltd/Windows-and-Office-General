@@ -1,0 +1,8 @@
+Sub DegreesAlt()
+'
+' DegreesAlt Macro
+' Macro recorded 5/17/2011 by Warren Lewington
+' Automates the degree symbol insertion when it cannot be done via a laptop...
+
+    Selection.TypeText Text:="°"
+End Sub
