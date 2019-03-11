@@ -1,0 +1,245 @@
+Attribute VB_Name = "Module1"
+Sub body_text_1()
+'
+' body_text_1 Macro
+' Macro recorded 10/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("Body Text")
+End Sub
+
+Sub body_text_2()
+'
+' body_text_2 Macro
+' Macro recorded 10/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("Body Text 2")
+
+End Sub
+Sub body_text_3()
+'
+' body_text_3 Macro
+' Macro recorded 10/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("Body Text 3")
+
+End Sub
+Sub list_bullet()
+'
+' list_bullet Macro
+' Macro recorded 10/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("List Bullet")
+
+End Sub
+Sub list_bullet_2()
+'
+' list_bullet_2 Macro
+' Macro recorded 10/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("List Bullet 2")
+
+End Sub
+Sub list_bullet_3()
+'
+' list_bullet_3 Macro
+' Macro recorded 10/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("List Bullet 3")
+
+End Sub
+Sub list_number()
+'
+' list_number Macro
+' Macro recorded 10/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("List Number")
+        ListGalleries(wdNumberGallery).ListTemplates(1).Name = ""
+    Selection.Range.ListFormat.ApplyListTemplate ListTemplate:=ListGalleries( _
+        wdNumberGallery).ListTemplates(1), ContinuePreviousList:=False, ApplyTo:= _
+        wdListApplyToWholeList, DefaultListBehavior:=wdWord9ListBehavior
+  End Sub
+  Sub list_number_2()
+'
+' list_number_2 Macro
+' Macro recorded 10/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("List Number 2")
+        ListGalleries(wdNumberGallery).ListTemplates(2).Name = ""
+    Selection.Range.ListFormat.ApplyListTemplate ListTemplate:=ListGalleries( _
+        wdNumberGallery).ListTemplates(2), ContinuePreviousList:=False, ApplyTo:= _
+        wdListApplyToWholeList, DefaultListBehavior:=wdWord9ListBehavior
+End Sub
+Sub list_number_3()
+'
+' list_number_3 Macro
+' Macro recorded 10/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("List Number 3")
+        ListGalleries(wdNumberGallery).ListTemplates(3).Name = ""
+    Selection.Range.ListFormat.ApplyListTemplate ListTemplate:=ListGalleries( _
+        wdNumberGallery).ListTemplates(3), ContinuePreviousList:=False, ApplyTo:= _
+        wdListApplyToWholeList, DefaultListBehavior:=wdWord9ListBehavior
+    
+
+
+End Sub
+Sub Caption()
+'
+' caption Macro
+' Macro recorded 10/05/2004 by Lewington
+' Macro recorded 3/06/2004 by Lewington
+
+    Selection.TypeParagraph
+    Selection.MoveUp Unit:=wdLine, Count:=1
+    Selection.Style = ActiveDocument.Styles("Caption")
+    Selection.TypeText Text:="Table "
+    Selection.Fields.Add Range:=Selection.Range, Type:=wdFieldEmpty, _
+        PreserveFormatting:=False
+    Selection.TypeText Text:="SEQ Table \* arabic \n"
+    Selection.MoveRight Unit:=wdCharacter, Count:=2
+    Selection.TypeText Text:=":" & vbTab
+
+End Sub
+
+Sub button_text()
+'
+' button_text Macro
+' Macro recorded 10/05/2004 by Lewington
+' Modifed 13/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("software button text")
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+    Selection.MoveRight Unit:=wdCharacter, Count:=1, Extend:=wdExtend
+    Selection.Font.underline = wdUnderlineSingle
+
+End Sub
+
+Sub button_text_no_und()
+'
+' button_text_no_und Macro
+' Macro recorded 13/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("software button text")
+    
+End Sub
+
+Sub title_text()
+'
+' title_text Macro
+' Macro recorded 10/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("software Page Title")
+
+End Sub
+
+
+Sub heading_1()
+'
+' heading_1 Macro
+' Macro recorded 12/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("Heading 1")
+
+End Sub
+
+Sub heading_2()
+'
+' heading_2 Macro
+' Macro recorded 12/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("Heading 2")
+
+End Sub
+
+Sub heading_3()
+'
+' heading_3 Macro
+' Macro recorded 12/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("Heading 3")
+
+End Sub
+Sub uppercase()
+'
+' uppercase Macro
+' Macro recorded 13/05/2004 by Lewington
+'
+    Selection.Range.Case = wdUpperCase
+End Sub
+Sub titlecase()
+'
+' titlecase Macro
+' Macro recorded 14/05/2004 by Lewington
+'
+    Selection.Range.Case = wdTitleWord
+    
+    End Sub
+
+Sub software_key_code()
+'
+' software_key_code()
+' Macro recorded 13/05/2004 by Lewington
+'
+    Selection.Style = ActiveDocument.Styles("software key code")
+End Sub
+Sub saveline()
+'
+' saveline Macro
+' Macro recorded 24/05/2004 by Lewington
+'
+    Selection.TypeText Text:="Click ******* to update the information to the MotoV8 database."
+End Sub
+Sub exitline()
+'
+' exitline Macro
+' Macro recorded 24/05/2004 by Lewington
+'
+    Selection.TypeText Text:="Click **** to close the window."
+End Sub
+Sub blue_line()
+'
+' blue_exitline Macro
+' Macro recorded 24/05/2004 by Lewington
+'
+    Selection.TypeText Text:="(It highlights in colour.)"
+End Sub
+
+Sub Caption_table()
+'
+' Caption_table Macro
+' Macro recorded 3/06/2004 by Lewington
+'
+    Selection.TypeParagraph
+        Selection.MoveUp Unit:=wdLine, Count:=1
+        Selection.Style = ActiveDocument.Styles("Body Text Picture")
+    
+    Selection.TypeParagraph
+        Selection.Style = ActiveDocument.Styles("Caption")
+        Selection.TypeText Text:="Table "
+        Selection.Fields.Add Range:=Selection.Range, Type:=wdFieldEmpty, _
+            PreserveFormatting:=False
+        Selection.TypeText Text:="SEQ Table \* arabic \n"
+        Selection.MoveRight Unit:=wdCharacter, Count:=2
+        Selection.TypeText Text:=":" & vbTab
+End Sub
+
+Sub Caption_figure()
+'
+' Macro1 Macro
+' Macro recorded 3/06/2004 by Lewington
+'
+    Selection.TypeParagraph
+        Selection.MoveUp Unit:=wdLine, Count:=1
+        Selection.Style = ActiveDocument.Styles("Body Text Picture")
+    
+    Selection.TypeParagraph
+        Selection.Style = ActiveDocument.Styles("Caption")
+        Selection.TypeText Text:="Figure "
+        Selection.Fields.Add Range:=Selection.Range, Type:=wdFieldEmpty, _
+            PreserveFormatting:=False
+        Selection.TypeText Text:="SEQ Figure \* arabic \n"
+        Selection.MoveRight Unit:=wdCharacter, Count:=2
+        Selection.TypeText Text:=":" & vbTab
+    
+End Sub
+
