@@ -1,0 +1,12 @@
+Sub ActiveCellPasteText()
+'
+' YesEntry Macro
+' Macro recorded 08/03/2010 by Warren Lewington
+'
+    ActiveCell.Value = "../" & ActiveCell.Value
+    
+'    .Characters(1, (ActiveCell.Characters.Home)).Font.Bold = False
+'    .Value = ActiveCell.Value & "../"
+'    .Font.Bold = True
+
+End Sub
