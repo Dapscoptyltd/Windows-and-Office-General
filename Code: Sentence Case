@@ -1,0 +1,8 @@
+Sub SentenceCase()
+'
+' SentenceCase Macro
+' Macro recorded 02/05/2008 by Warren Lewington
+'
+    Selection.Range.Case = wdSentenceCase
+   
+End Sub
