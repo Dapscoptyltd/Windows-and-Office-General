@@ -1,0 +1,11 @@
+Sub DeleteSingleLine()
+'
+' DeleteShortDateCorrect Macro
+' Deletes lines of text and applies default paragraph font style.
+'
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1, Extend:=wdExtend
+    Selection.TypeBackspace
+    Selection.Style = ActiveDocument.Styles("Default Paragraph Font")
+
+End Sub
