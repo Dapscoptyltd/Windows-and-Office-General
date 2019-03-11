@@ -1,0 +1,10 @@
+Sub UpdateFields()
+' Attribute UpdateFields.VB_Description = "Macro recorded 21/04/2010 by Warren Lewington"
+' Attribute UpdateFields.VB_ProcData.VB_Invoke_Func = "Project.NewMacros.UpdateFields"
+'
+' UpdateFields Macro
+' Macro recorded 21/04/2010 by Warren Lewington
+'
+    Selection.WholeStory
+    Selection.Fields.Update
+End Sub
