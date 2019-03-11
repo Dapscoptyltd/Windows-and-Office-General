@@ -1,0 +1,16 @@
+Sub IndexCopyPaste()
+'
+' IndexCopyPaste Macro
+' Macro recorded 17/04/2012 by W. Lewington
+' Copies selected text, Insets a index field and adds the copied text as an index entry. 
+'
+    Selection.Copy
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.Fields.Add Range:=Selection.Range, Type:=wdFieldEmpty, _
+        PreserveFormatting:=False
+    Selection.TypeText Text:="XE """
+    Selection.PasteAndFormat (wdPasteDefault)
+    Selection.TypeText Text:=""""
+    Selection.MoveRight Unit:=wdCharacter, Count:=2
+End Sub
+
