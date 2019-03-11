@@ -1,0 +1,11 @@
+Sub index()
+'
+' index Macro
+' Macro recorded 17/06/2004 by Lewington
+'
+    Selection.Fields.Add Range:=Selection.Range, Type:=wdFieldEmpty, Text:= _
+        "XE ", PreserveFormatting:=False
+    Selection.MoveLeft Unit:=wdCharacter, Count:=2
+    Selection.TypeText Text:=""""""
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+End Sub
