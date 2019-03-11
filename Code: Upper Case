@@ -1,0 +1,8 @@
+Sub UpperCase()
+'
+' UpperCase Macro
+' Macro recorded 13/03/2008 by Warren Lewington
+'
+    Selection.Range.Case = wdUpperCase
+   
+End Sub
