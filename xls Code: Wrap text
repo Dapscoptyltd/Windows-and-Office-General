@@ -1,0 +1,20 @@
+Sub WrapText()
+' Attribute WrapText.VB_Description = "Macro recorded 14/09/2010 by LewingtW"
+' Attribute WrapText.VB_ProcData.VB_Invoke_Func = "w\n14"
+'
+' WrapText Macro
+' Macro recorded 14/09/2010 by LewingtW
+' Keyboard Shortcut: Ctrl+w
+'
+    With Selection
+        .HorizontalAlignment = xlLeft
+        .VerticalAlignment = xlTop
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+End Sub
