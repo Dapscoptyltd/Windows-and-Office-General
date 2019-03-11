@@ -1,0 +1,9 @@
+Sub ItemNumber()
+'
+' ItemNumber Macro
+' Macro recorded 16/03/2011 by Warren Lewington
+' Inserts the text below and allows direct entry of the number into the text. 
+
+    Selection.TypeText Text:="item []"
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+End Sub
