@@ -1,0 +1,46 @@
+Sub RemoveUnusedStyles()
+'
+' RemoveUnusedStyles Macro
+'
+Dim sty As Style
+With Selection.Find
+    .ClearFormatting
+    .Text = ""
+    .Forward = True
+    .Wrap = wdFindContinue
+    .Format = True
+    .MatchCase = False
+    .MatchWholeWord = False
+    .MatchWildcards = False
+    .MatchSoundsLike = False
+    .MatchAllWordForms = False
+End With
+'
+For Each sty In ActiveDocument.Styles
+    N$ = sty.NameLocal
+'    m = MsgBox("Checking " + N$, vbOK, "Remove unused")
+    If sty.BuiltIn Then
+'        m = MsgBox(N$ + " built-in.", vbOK, "Remove unused")
+    Else
+'      In use?
+        Selection.HomeKey Unit:=wdStory
+        With Selection.Find
+            .Style = N$
+            .Text = ""
+            .Forward = True
+            .Wrap = wdFindContinue
+            If .Execute Then
+'                m = MsgBox(N$ + " in use.", vbOKOnly, "Remove unused")
+            Else
+                m = MsgBox("Delete " + N$, vbYesNoCancel, "Remove unused")
+                If m = 6 Then
+                    sty.Delete
+                ElseIf m = 2 Then
+                    Stop
+                End If
+            End If
+        End With
+    End If
+Next sty
+End Sub
+
