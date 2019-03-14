@@ -10,3 +10,24 @@ With ActiveDocument.ActiveWindow.Selection
 
 End With
 End Sub
+
+Sub InsertAnd()
+' Code created while preliminary testing for Slasher project. 
+' buttons for user forms, which add the text below. 
+' See final Slasher Module for complete function set. 
+
+With ActiveDocument.ActiveWindow.Selection
+    .TypeText Text:=" and "
+End With
+End Sub
+Sub InsertOr()
+
+With ActiveDocument.ActiveWindow.Selection
+    .TypeText Text:=" or "
+End With
+End Sub
+Sub InsertComma()
+With ActiveDocument.ActiveWindow.Selection
+    .TypeText Text:=", "
+End With
+End Sub
