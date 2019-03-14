@@ -1,0 +1,12 @@
+Sub FindForwardSlash()
+' Created 14 March 2019 as part of Slasher project. 
+' Finds forwards slash, highlights it and stops for next command.
+' This code forms the "Private Sub Find1_Click()" stub in [Userform: Userform Slasher](https://github.com/Dapscoptyltd/Windows-and-Office-General/blob/835a7a710fbaefb4d559bd158f9375df64fd6fa0/Userform:%20Slasher.frm)
+
+With Selection.Find
+ .Forward = True
+ .Wrap = wdFindStop
+ .Text = "/"
+ .Execute
+End With
+End Sub
