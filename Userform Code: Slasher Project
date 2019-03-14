@@ -1,0 +1,70 @@
+Private Sub Find1_Click()
+' Created 14 March 2019 as part of the Slasher project.
+' This method on click will Find the next Forward Slash and highlight it.
+
+With Selection.Find
+ .Forward = True
+ .Wrap = wdFindStop
+ .Text = "/"
+ .Execute
+End With
+
+End Sub
+Private Sub CommandButtonReviewLater_Click()
+' Created 14 March 2019 as part of the Slasher project.
+' On click this highlights the text red and replaces -
+' the forward slash with "Review"
+' Designed to be used when the forward slash construction is -
+' causing a structural error in the text.
+
+ Selection.Range.HighlightColorIndex = wdRed
+  
+  With ActiveDocument.ActiveWindow.Selection
+    .TypeText Text:=" Review "
+  End With
+
+End Sub
+Private Sub CommandButtonAnd_Click()
+' Created 14 March 2019 as part of the Slasher project.
+' On click this button replaces the forward slash with an 'and.'
+
+  With ActiveDocument.ActiveWindow.Selection
+    .TypeText Text:=" and "
+  End With
+
+End Sub
+Private Sub CommandButtonOr_Click()
+' Created 14 March 2019 as part of the Slasher project.
+' On click this button replaces the forward slash with an 'or.'
+
+  With ActiveDocument.ActiveWindow.Selection
+    .TypeText Text:=" or "
+  End With
+
+
+End Sub
+Private Sub CommandButtoncomma_Click()
+' Created 14 March 2019 as part of the Slasher project.
+' On click this button replaces the forward slash with a comma.
+
+  With ActiveDocument.ActiveWindow.Selection
+    .TypeText Text:=", "
+  End With
+
+End Sub
+Private Sub CommandButtonInsertText_Click()
+' Created 14 March 2019 as part of the Slasher project.
+' On click this button replaces the forward slash with text -
+' entered into the text box. The text box is limited to 24 characters.
+
+  With ActiveDocument.ActiveWindow.Selection
+    .TypeText Text:=UserformSlasher.TextBoxAlternateToSlash.Text
+  End With
+
+End Sub
+Private Sub CommandButtonClose_Click()
+' Created 14 March 2019 as part of the Slasher project.
+' On click this button closes the user form: UserformSlasher
+
+    Unload Me
+End Sub
