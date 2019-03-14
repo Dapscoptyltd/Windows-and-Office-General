@@ -1,0 +1,9 @@
+Sub Highlight()
+' Created 14 March 2019 as part of the Slasher macro.
+' Highlight Macro
+'
+'
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1, Extend:=wdExtend
+    Options.DefaultHighlightColorIndex = wdRed
+    Selection.Range.HighlightColorIndex = wdRed
+End Sub
