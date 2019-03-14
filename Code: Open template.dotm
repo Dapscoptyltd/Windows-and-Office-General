@@ -1,0 +1,12 @@
+
+Sub OpenSlasher()
+' Created 14 March 2019 as part of the Slasher project.
+' OpenSlasher Macro
+' Opens the 'Slasher.dotm' template.
+'This code is redundant as the change to references and the "Sub CallSlasher()" bypasses this method.
+
+    Documents.Open FileName:="Slasher.dotm", ConfirmConversions:=False, _
+        ReadOnly:=False, AddToRecentFiles:=False, PasswordDocument:="", _
+        PasswordTemplate:="", Revert:=False, WritePasswordDocument:="", _
+        WritePasswordTemplate:="", Format:=wdOpenFormatAuto, XMLTransform:=""
+End Sub
