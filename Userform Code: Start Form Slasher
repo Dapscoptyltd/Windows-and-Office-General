@@ -1,0 +1,9 @@
+Sub StartFormSlasher()
+' Created 14 MArch 2019 for the Slasher project.
+' Calls the user form "UserformSlasher"
+' the vbModeless command enables the user form and -
+' Word document to be used concurrently.
+
+    UserformSlasher.Show vbModeless
+
+End Sub
