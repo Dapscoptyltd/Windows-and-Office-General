@@ -1,0 +1,6 @@
+Sub CallSlasher()
+' Created 14 March 2019 for the SLasher project.
+' Calls the user form: UserformSlasher
+' Required setting the project object library as referenced in Tools> References.
+
+Call StartFormSlasher
