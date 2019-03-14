@@ -1,0 +1,12 @@
+Private Sub CommandButton1_Click()
+' Create 14 March while testing code for Slasher project.
+' button for userform 
+' Code will hide a dialog and enter the text in the double quotes.
+
+Me.Hide
+With ActiveDocument.ActiveWindow.Selection
+
+    .TypeText Text:="Your text here"
+
+End With
+End Sub
