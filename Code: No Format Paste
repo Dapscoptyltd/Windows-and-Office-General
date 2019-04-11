@@ -4,3 +4,19 @@ Sub NoFormatPaste()
 
     Selection.PasteSpecial DataType:=wdPasteText
 End Sub
+
+Sub NoFormatPaste()
+' Macro recorded 17/05/2011 by Warren Lewington
+' Finally found code that worked. From Cybertext - Rhonda Bracey.
+' Refined 11-Apr-2019 by adding error handling from Simon Williams
+' AndFormat etc added by me.
+
+On Error GoTo errHandler
+    ' From Rhonda Bracey:
+    Selection.PasteSpecial DataType:=wdPasteText
+
+On Error GoTo errHandler2
+errHandler:
+    Selection.PasteAndFormat (wdFormatPlainText)
+    
+End Sub
