@@ -1,0 +1,18 @@
+Private Sub CommandButtonTo_Click()
+' Created 30 April 2019 as enhancement to the Slasher project.
+' On click this button replaces the forward slash with an 'and.'
+
+  With ActiveDocument.ActiveWindow.Selection
+    .TypeText Text:=" to "
+  End With
+ 
+ ' 30/Apr/19 created the execute function below to move to next vergule
+  
+  With Selection.Find
+   .Forward = True
+   .Wrap = wdFindStop
+   .Text = "/"
+   .Execute
+ End With
+
+End Sub
