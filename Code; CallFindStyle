@@ -1,0 +1,22 @@
+Sub CallFindStyle()
+'
+' CallFindStyle Macro
+'
+'
+    Selection.Find.ClearFormatting
+    Selection.Find.Style = ActiveDocument.Styles("RMS Caption Figure")
+    With Selection.Find
+        .Text = ""
+        .Replacement.Text = ""
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+  
+    Selection.Find.Execute
+End Sub
