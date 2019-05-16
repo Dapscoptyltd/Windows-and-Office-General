@@ -37,3 +37,23 @@ Sub StartFormBookmark()
 End Sub
 <End Normal - NewMacros (Code)>
 
+<Some more snippets testing adding bookmarks and other code>
+Sub CallOpenBookmark()
+'
+' CallOpenBookmark Macro
+'
+'
+    Selection.MoveDown Unit:=wdLine, Count:=2
+    With ActiveDocument.Bookmarks
+        .Add Range:=Selection.Range, Name:="Chart_1_3"
+    '    .DefaultSorting = wdSortByName
+    '    .ShowHidden = False
+    End With
+End Sub
+
+Sub AddBookmark()
+
+ActiveDocument.Bookmarks.Add Name:="temp", Range:=Selection.Range
+
+End Sub
+<End snippets.>
