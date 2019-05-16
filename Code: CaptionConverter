@@ -1,0 +1,124 @@
+' Created 16 May 2019 as part of the replace multilevel list linked captions.
+' Created by Warren
+' This finds the relevant style - which is linked to the multilevel lists.
+
+    Selection.Find.ClearFormatting
+    Selection.Find.Style = ActiveDocument.Styles("RMS Caption Figure")
+    With Selection.Find
+        .Text = ""
+        .Replacement.Text = ""
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+  
+    Selection.Find.Execute
+    
+End Sub
+Sub CallFindStyleCaptionTable()
+' Created 16 May 2019 as part of the replace multilevel list linked captions.
+' Created by Warren
+' This finds the relevant style - which is linked to the multilevel lists.
+
+    Selection.Find.ClearFormatting
+    Selection.Find.Style = ActiveDocument.Styles("RMS Caption Table Title")
+    With Selection.Find
+        .Text = ""
+        .Replacement.Text = ""
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+  
+    Selection.Find.Execute
+    
+End Sub
+Sub ChangeCaptionStyle()
+' Created 16 May 2019 as part of the replace multilevel list linked captions.
+' Created by Warren
+' Changes the style to the 'RMS Caption' style.
+
+    Selection.Style = ActiveDocument.Styles("RMS Caption")
+
+' Change the style to RMS Caption then go home
+    Selection.HomeKey Unit:=wdLine
+    
+End Sub
+Sub AddCaptionTextFigure()
+' Created 16 May 2019 as part of the replace multilevel list linked captions.
+' Created by Warren
+' Add the caption "Figure"
+    
+    Selection.TypeText Text:="Figure "
+
+End Sub
+Sub AddCaptionTextTable()
+' Created 16 May 2019 as part of the replace multilevel list linked captions.
+' Created by Warren
+' Add the caption "Table"
+    
+    Selection.TypeText Text:="Table "
+
+End Sub
+Sub AddStyleRef()
+' Created 16 May 2019 as part of the replace multilevel list linked captions.
+' Created by Warren
+' Add styleref field and the full stop
+    
+    Selection.Fields.Add Range:=Selection.Range, Type:=wdFieldEmpty, _
+        PreserveFormatting:=False
+    Selection.TypeText Text:="StyleRef ""RMS Heading 1"" \t \w \n"
+    Selection.MoveRight Unit:=wdCharacter, Count:=2
+    Selection.TypeText Text:="."
+
+End Sub
+Sub AddSEQFigure()
+' Created 16 May 2019 as part of the replace multilevel list linked captions.
+' Created by Warren
+' Add the SEQ field for a figure
+ 
+    Selection.Fields.Add Range:=Selection.Range, Type:=wdFieldEmpty, _
+        PreserveFormatting:=False
+    Selection.TypeText Text:="SEQ ""Figure"" \n"
+    Selection.MoveRight Unit:=wdCharacter, Count:=2
+    Selection.TypeText Text:=":" & vbTab
+End Sub
+Sub AddSEQTable()
+' Created 16 May 2019 as part of the replace multilevel list linked captions.
+' Created by Warren
+' Add the SEQ field for a table
+ 
+    Selection.Fields.Add Range:=Selection.Range, Type:=wdFieldEmpty, _
+        PreserveFormatting:=False
+    Selection.TypeText Text:="SEQ ""Table"" \n"
+    Selection.MoveRight Unit:=wdCharacter, Count:=2
+    Selection.TypeText Text:=":" & vbTab
+
+End Sub
+Sub AddReset()
+' Created 16 May 2019 as part of the replace multilevel list linked captions.
+' Created by Warren
+' Adds the reset "\r" to the SEQ field when a new heading 1 is reached.
+
+    Selection.MoveLeft Unit:=wdCharacter, Count:=6
+    Selection.TypeText Text:="\r 1 "
+
+End Sub
+Sub UpdateChSEQFields()
+' Created 16 May 2019 as part of the replace multilevel list linked captions.
+' Created by Warren
+' Updates the field codes
+
+    Selection.HomeKey Unit:=wdLine, Extend:=wdExtend
+    Selection.Fields.Update
+End Sub
