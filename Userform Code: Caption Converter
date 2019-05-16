@@ -1,0 +1,56 @@
+
+Call CallFindStyleCaptionFigure
+Call ChangeCaptionStyle
+Call AddCaptionTextFigure
+Call AddStyleRef
+Call AddSEQFigure
+Call UpdateChSEQFields
+
+End Sub
+
+Private Sub CommandButtonFigureReset_Click()
+
+Call CallFindStyleCaptionFigure
+Call ChangeCaptionStyle
+Call AddCaptionTextFigure
+Call AddStyleRef
+Call AddSEQFigure
+Call AddReset
+Call UpdateChSEQFields
+
+End Sub
+
+Private Sub CommandButtonTable_Click()
+
+Call CallFindStyleCaptionTable
+Call ChangeCaptionStyle
+Call AddCaptionTextTable
+Call AddStyleRef
+Call AddSEQTable
+Call UpdateChSEQFields
+
+End Sub
+
+Private Sub CommandButtonTableReset_Click()
+
+Call CallFindStyleCaptionTable
+Call ChangeCaptionStyle
+Call AddCaptionTextTable
+Call AddStyleRef
+Call AddSEQTable
+Call AddReset
+Call UpdateChSEQFields
+
+End Sub
+
+Private Sub CommandButtonClose_Click()
+' Created 16 May 2019 as part of the Caption Converter project.
+' On click this button closes the user form: UserformCaptionConverter
+
+    Unload Me
+End Sub
+
+
+Private Sub UserForm_Click()
+
+End Sub
