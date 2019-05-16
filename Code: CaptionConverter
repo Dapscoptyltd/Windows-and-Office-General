@@ -122,3 +122,4 @@ Sub UpdateChSEQFields()
     Selection.HomeKey Unit:=wdLine, Extend:=wdExtend
     Selection.Fields.Update
 End Sub
+
