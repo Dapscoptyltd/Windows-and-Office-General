@@ -1,0 +1,39 @@
+<from the UserFormBookmark>
+Private Sub ListBoxBookmarkText_Change()
+
+End Sub
+
+Private Sub CommandButtonBookmarkAdd_Click()
+
+ ' Select some text in the active document prior
+ ' to execution.
+ ' Removed this 'Name:=' object and same problem occured.
+ ActiveDocument.Bookmarks.Add _
+ Name:="UserFormBookmark.TextBoxBookmark.Text", Range:=Selection.Range
+ 
+ ' This is the problem here - I've not got to the point where I can't add the text I've typed into the 'TextBoxBookmark' on the user form.
+ ' I think its going to need some other add method.
+ 
+End Sub
+<End USerFormBookmark>
+
+<From Normal - NewMacros (Code)>
+Sub CallBookmark()
+' Created 16 May 2019 for the Add Bookmark project.
+' Calls the user form: UserformBookmark
+' Required setting the project object library as referenced in Tools> References.
+
+Call StartFormBookmark
+
+End Sub
+Sub StartFormBookmark()
+' Created 14 MArch 2019 for the Slasher project.
+' Calls the user form "UserformSlasher"
+' the vbModeless command enables the user form and -
+' Word document to be used concurrently.
+
+    UserFormBookmark.Show vbModeless
+
+End Sub
+<End Normal - NewMacros (Code)>
+
