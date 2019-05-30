@@ -1,0 +1,13 @@
+Sub ReferenceSourceLink()
+' Adds reference source to document fields, broken or otherwise.
+' Breaks field link, adds highlight, reference source text and places cursor in square brackets Macro1 Macro
+'
+
+    Selection.Fields.Unlink
+    Selection.Style = ActiveDocument.Styles("Writer Notes highlight")
+'    Selection.Style = ActiveDocument.Styles("RMS Body Text")
+    Selection.MoveRight Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:="Reference source []"
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+    
+End Sub
