@@ -1,0 +1,12 @@
+Sub CopyPasteValues()
+'
+' CopyPasteValues Macro
+' Copies linked cell values and pastes the values, replacing the cell link... God only knows why...
+'
+' Keyboard Shortcut: Ctrl+Shift+V
+'
+    Application.CutCopyMode = False
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+End Sub
