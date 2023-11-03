@@ -1,0 +1,55 @@
+Sub AddAltText()
+    Dim shp As Shape
+    Dim ilshp As InlineShape
+    Dim tbl As Table
+    Dim strAltTxt As String
+
+    strAltTxt = InputBox(Prompt:="Enter alt text for the selected object", _
+        Title:="AltText", Default:=" ")
+    If StrPtr(strAltTxt) = 0 Then Exit Sub   ' canceled
+
+    Select Case Selection.Type
+        Case wdSelectionShape
+            Set shp = Selection.ShapeRange(1)
+            shp.AlternativeText = strAltTxt
+            shp.Title = "Alt Text"
+        Case wdSelectionInlineShape
+            ' When a Shape is set to In Line text wrapping,
+            ' it's still a member of the ShapeRange and not the
+            ' InlineShapes collection.
+            On Error Resume Next
+            Set ilshp = Selection.InlineShapes(1)
+            If Err.Number = 0 Then
+                ilshp.AlternativeText = strAltTxt
+                ilshp.Title = "Alt Text"
+            Else
+                Err.Clear
+                Set shp = Selection.ShapeRange(1)
+                shp.AlternativeText = strAltTxt
+                shp.Title = "Alt Text"
+            End If
+        Case Else
+            If Selection.Information(wdWithInTable) Then
+                ' If the Selection is in a nested table,
+                ' find the outermost table and set the
+                ' alt text there.
+                ' If you want the alt text to attach to
+                ' the nested table instead, delete the
+                ' statements with the comment "<=".
+                Dim oRg As Range                                 ' <=
+                Dim nNestLev As Integer                          ' <=
+                Set tbl = Selection.Tables(1)
+                nNestLev = tbl.NestingLevel                      ' <=
+                Set oRg = tbl.Range.Cells(1).Range.Characters(1) ' <=
+                While nNestLev > 1                               ' <=
+                    oRg.MoveStart wdCharacter, -1                ' <=
+                    nNestLev = oRg.Tables(1).NestingLevel        ' <=
+                Wend                                             ' <=
+                Set tbl = oRg.Tables(1)                          ' <=
+                tbl.Descr = strAltTxt
+                tbl.Title = "Alt Text"
+            ElseIf Selection.Type = wdSelectionIP Or Selection.Type = wdSelectionNormal Then
+                MsgBox "Select a picture, shape, text box, or table and try again." & vbCr & "For a shape, click on the edge instead of the middle."
+            End If
+    End Select
+End Sub
