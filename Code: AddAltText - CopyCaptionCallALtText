@@ -1,0 +1,8 @@
+Sub CopyCaptionCallALtText()
+' For use with the add alt text macro. Copies the selected text and calls the add alt texdt macro.
+
+    Selection.Copy
+    Call AddAltText
+'    Selection.PasteSpecial DataType:=wdPasteText
+
+End Sub
