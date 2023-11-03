@@ -56,4 +56,15 @@ Sub AddBookmark()
 ActiveDocument.Bookmarks.Add Name:="temp", Range:=Selection.Range
 
 End Sub
+Sub Bookmark()
+' Removed from .dotm tempalte 3 November 2023. Not sure what was intended with this macro. 
+' Bookmark Macro
+'
+    Selection.HomeKey Unit:=wdLine, Extend:=wdExtend
+    With ActiveDocument.Bookmarks
+'        .Add Range:=Selection.Range, Name:="Graph_0"
+'        .DefaultSorting = wdSortByName
+'        .ShowHidden = True
+    End With
+End Sub
 <End snippets.>
