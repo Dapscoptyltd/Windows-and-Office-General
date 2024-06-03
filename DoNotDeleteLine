@@ -1,0 +1,12 @@
+Sub DoNotDeleteLine()
+' Created 03-Jun-2024 by Warren Lewington.
+' Sets 'Writer Notes' paragraph style,
+' Inserts words below.
+    
+
+    Selection.Style = ActiveDocument.Styles("Default Paragraph Font")
+    Selection.Style = ActiveDocument.Styles("Writer Notes")
+'    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:="Do not remove this line"
+
+End Sub
