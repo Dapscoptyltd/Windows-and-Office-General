@@ -54,14 +54,56 @@ Private Sub CommandButtoncomma_Click()
 End Sub
 Private Sub CommandButtonInsertText_Click()
 ' Created 14 March 2019 as part of the Slasher project.
+' Modified 11 APril 2025 to include blank entry error runtime.
 ' On click this button replaces the forward slash with text -
 ' entered into the text box. The text box is limited to 24 characters.
 
+ Dim selectedItem As String
+
+     If TextBoxAlternateToSlash = "" Then
+        selectedItem = TextBoxAlternateToSlash.Value
+         MsgBox "Please enter the required text", vbExclamation
+          Call TextBoxAlternateToSlash_Initialize
+        Exit Sub
+     End If
+
   With ActiveDocument.ActiveWindow.Selection
-    .TypeText Text:=UserformSlasher.TextBoxAlternateToSlash.Text
+    .TypeText Text:=" " & UserformSlasher.TextBoxAlternateToSlash.Text & " "
   End With
+ 
+ ' 30/Apr/19 added the execute function below to move to next vergule
+  
+  With Selection.Find
+   .Forward = True
+   .Wrap = wdFindStop
+   .Text = "/"
+   .Execute
+ End With
+End Sub
+
+Private Sub TextBoxAlternateToSlash_Initialize()
+
+' Created 10 April 2025 by Warren Lewington.
+' Sets cursor focus in 'TextBoxNewBookmark'.
+  
+  TextBoxAlternateToSlash.SetFocus
 
 End Sub
+
+[
+   {Replaced code below with that above 11 April 2025}
+     " Private Sub CommandButtonInsertText_Click()
+     " ' Created 14 March 2019 as part of the Slasher project.
+     " ' On click this button replaces the forward slash with text -
+     " ' entered into the text box. The text box is limited to 24 characters.
+
+         "   With ActiveDocument.ActiveWindow.Selection
+         "     .TypeText Text:=UserformSlasher.TextBoxAlternateToSlash.Text
+         "   End With
+
+      " End Sub
+]
+
 Private Sub CommandButtonClose_Click()
 ' Created 14 March 2019 as part of the Slasher project.
 ' On click this button closes the user form: UserformSlasher
